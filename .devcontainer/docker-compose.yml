@@ -1,0 +1,11 @@
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    volumes:
+      - ..:/app/loconotion:cached
+    command: sleep infinity
+    security_opt:
+      - seccomp:unconfined
+    shm_size: 2gb

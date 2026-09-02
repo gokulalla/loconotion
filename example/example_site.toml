@@ -7,7 +7,7 @@ name = "Notion Test Site"
 
 # the notion.so page to being parsing from. This page will become the index.html
 # of the generated site, and loconotation will parse all sub-pages present on the page
-page = "https://www.notion.so/Loconotion-Example-Page-03c403f4fdc94cc1b315b9469a8950ef"
+page = "https://app.notion.com/Loconotion-Example-Page-03c403f4fdc94cc1b315b9469a8950ef"
 
 ## Global Site Settings ##
 # this [site] table defines override settings for the whole site
@@ -74,7 +74,7 @@ page = "https://www.notion.so/Loconotion-Example-Page-03c403f4fdc94cc1b315b9469a
 # not using a string that appears in multiple page urls)
 [pages]
   # the following settings will only apply to this page: 
-  #   https://www.notion.so/d2fa06f244e64f66880bb0491f58223d
+  #   https://app.notion.com/d2fa06f244e64f66880bb0491f58223d
   [pages.d2fa06f244e64f66880bb0491f58223d]
     ## custom slugs ##
     # inside page settings, you can change the url for that page with the 'slug' key

@@ -1,0 +1,35 @@
+{
+  "name": "Loconotion",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/app/loconotion",
+  "overrideCommand": true,
+  "postCreateCommand": "pip install pytest black",
+  "remoteEnv": {
+    "PYTHONPATH": "${containerWorkspaceFolder}/loconotion"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.debugpy",
+        "ms-python.black-formatter"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "python.analysis.extraPaths": [
+          "${workspaceFolder}/loconotion"
+        ],
+        "python.testing.pytestEnabled": true,
+        "python.testing.cwd": "${workspaceFolder}/loconotion",
+        "python.testing.pytestArgs": [
+          "tests"
+        ],
+        "editor.formatOnSave": true,
+        "[python]": {
+          "editor.defaultFormatter": "ms-python.black-formatter"
+        }
+      }
+    }
+  }
+}

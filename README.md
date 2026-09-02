@@ -11,7 +11,7 @@
 Some services like Super, HostingPotion, HostNotion and Fruition try to work around this issue by relying on a [clever hack](https://gist.github.com/mayneyao/b9fefc9625b76f70488e5d8c2a99315d) using CloudFlare workers. This solution, however, has some disadvantages:
 
 - **Not free** - Super, HostingPotion and HostNotion all take a monthly fee since they manage all the "hacky bits" for you; Fruition is open-source, but any domain with a decent amount of daily visits will soon clash against CloudFlare's free tier limitations, and force you to upgrade to the 5$ or more plan (plus you need to setup Cloudflare yourself)
-- **Slow-ish** - As the page is still hosted on Notion, it comes bundled with all their analytics, editing / collaboration javascript, vendors css, and more bloat which causes the page to load at speeds that are not exactly appropriate for a simple blog / website. Running [example page](https://www.notion.so/The-perfect-It-s-Always-Sunny-in-Philadelphia-episode-d08aaec2b24946408e8be0e9f2ae857e) on Google's [PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/) scores a measly **24 - 66** on mobile / desktop.
+- **Slow-ish** - As the page is still hosted on Notion, it comes bundled with all their analytics, editing / collaboration javascript, vendors css, and more bloat which causes the page to load at speeds that are not exactly appropriate for a simple blog / website. Running [example page](https://app.notion.com/The-perfect-It-s-Always-Sunny-in-Philadelphia-episode-d08aaec2b24946408e8be0e9f2ae857e) on Google's [PageSpeed Insights](https://developers.google.com/speed/pagespeed/insights/) scores a measly **24 - 66** on mobile / desktop.
 - **Ugly URLs** - While the services above enable the use of custom domains, the URLs for individual pages are stuck with the long, ugly, original Notion URL (apart from Fruition - they got custom URLs figured out, although you will always see the original URL flashing for an instant when the page is loaded).
 - **Notion Free Account Limitations** - Recently Notion introduced a change to its pricing model where public pages can't be set to be indexed by search engines on a free account (but they also removed the blocks count limitations, which is a good trade-off if you ask me)
 
@@ -51,7 +51,7 @@ It does, but I wasn't really happy with the styling - the pages looked a bit ugl
 
 You can check out an example site containing most of Notion's blocks / elements exported as a static site with Loconotion, and hosted on Netlify: https://loconotion-example.netlify.app/
 
-For reference, the original Notion public page that the site was generated from can be accessed [here](https://www.notion.so/Loconotion-Example-Page-03c403f4fdc94cc1b315b9469a8950ef#ffa3779739fd4ba286b7f8462f9e8e60).
+For reference, the original Notion public page that the site was generated from can be accessed [here](https://app.notion.com/Loconotion-Example-Page-03c403f4fdc94cc1b315b9469a8950ef#ffa3779739fd4ba286b7f8462f9e8e60).
 
 ## Installation & Requirements
 
@@ -78,7 +78,7 @@ Docker container is built from `python:3.8` tag, there is google-chrome-stable a
 
 ## Simple Usage
 
-`python loconotion https://www.notion.so/The-perfect-It-s-Always-Sunny-in-Philadelphia-episode-d08aaec2b24946408e8be0e9f2ae857e`
+`python loconotion https://app.notion.com/The-perfect-It-s-Always-Sunny-in-Philadelphia-episode-d08aaec2b24946408e8be0e9f2ae857e`
 
 In its simplest form, the script takes the URL of a public Notion.so page, and generates the site inside the `dist` folder, based on the page's title (the above example will generate the site inside `dist\The-perfect-It-s-Always-Sunny-in-Philadelphia\`).
 
@@ -100,7 +100,7 @@ name = "Notion Test Site"
 
 # the notion.so page to being parsing from. This page will become the index.html
 # of the generated site, and loconotion will parse all sub-pages present on the page
-page = "https://www.notion.so/Loconotion-Example-Page-03c403f4fdc94cc1b315b9469a8950ef"
+page = "https://app.notion.com/Loconotion-Example-Page-03c403f4fdc94cc1b315b9469a8950ef"
 
 # optionally apply notion's dark mode, remove the line below to use the default light mode
 theme = "dark"
@@ -177,7 +177,7 @@ theme = "dark"
 # not using a string that appears in multiple page urls)
 [pages]
   # the following settings will only apply to this page:
-  #   https://www.notion.so/d2fa06f244e64f66880bb0491f58223d
+  #   https://app.notion.com/d2fa06f244e64f66880bb0491f58223d
   [pages.d2fa06f244e64f66880bb0491f58223d]
     ## custom slugs ##
     # inside page settings, you can change the url for that page with the 'slug' key

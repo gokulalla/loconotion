@@ -128,7 +128,7 @@ def init_parser(args, log):
             log.critical("Connection error")
             raise exception
 
-        if "notion.so" in args.target or "notion.site" in args.target:
+        if "notion.com" in args.target or "app.notion.com" in args.target:
             log.info("Initialising parser with simple page url")
             config = {"page": args.target}
             parser = Parser(config=config, args=vars(args))

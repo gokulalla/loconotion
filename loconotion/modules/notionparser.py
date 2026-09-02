@@ -442,16 +442,16 @@ class Parser:
                     img_src = img["src"]
                     # if the path starts with /, it's one of notion's predefined images
                     if img["src"].startswith("/"):
-                        img_src = f'https://www.notion.so{img["src"]}'
+                        img_src = f'https://app.notion.com{img["src"]}'
                         # notion's own default images urls are in a weird format, need to sanitize them
-                        # img_src = 'https://www.notion.so' + img['src'].split("notion.so")[-1].replace("notion.so", "").split("?")[0]
+                        # img_src = 'https://app.notion.com' + img['src'].split("notion.so")[-1].replace("notion.so", "").split("?")[0]
                         # if (not '.amazonaws' in img_src):
                         # img_src = urllib.parse.unquote(img_src)
 
                     cached_image = self.cache_file(img_src)
                     img["src"] = cached_image
                 elif img["src"].startswith("/"):
-                    img["src"] = f'https://www.notion.so{img["src"]}'
+                    img["src"] = f'https://app.notion.com{img["src"]}'
 
             # on emoji images, cache their sprite sheet and re-set their background url
             if img.has_attr("class") and "notion-emoji" in img["class"]:
@@ -461,7 +461,7 @@ class Parser:
                     spritesheet.find("(") + 1 : spritesheet.find(")")
                 ]
                 cached_spritesheet_url = self.cache_file(
-                    f"https://www.notion.so{spritesheet_url}"
+                    f"https://app.notion.com{spritesheet_url}"
                 )
 
                 style["background"] = spritesheet.replace(
@@ -477,7 +477,7 @@ class Parser:
                 if "vendors~" in link["href"]:
                     continue
                 cached_css_file = self.cache_file(
-                    f'https://www.notion.so{link["href"]}'
+                    f'https://app.notion.com{link["href"]}'
                 )
                 # files in the css file might be reference with a relative path,
                 # so store the path of the current css file
@@ -499,7 +499,7 @@ class Parser:
                             font_url = "/".join(
                                 p.strip("/")
                                 for p in [
-                                    "https://www.notion.so",
+                                    "https://app.notion.com",
                                     parent_css_path,
                                     font_file,
                                 ]
@@ -741,7 +741,9 @@ class Parser:
                 " in the configuration files are unique"
             )
         log.info(f"Exporting page '{url}' as '{html_file}'")
-        with open(self.dist_folder / html_file, "wb") as f:
+        output_path = self.dist_folder / html_file
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        with open(output_path, "wb") as f:
             f.write(html_str.encode("utf-8").strip())
         self.processed_pages[url] = html_file
 
