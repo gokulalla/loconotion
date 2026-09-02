@@ -288,7 +288,7 @@ class Parser:
 
         self.inject_loconotion_script_and_css(soup)
 
-        hrefDomain = f'{url.split("notion.site")[0]}notion.site'
+        hrefDomain = 'https://app.notion.com'
         log.info(f"Got the domain as {hrefDomain}")
 
         subpages = self.find_subpages(url, soup, hrefDomain)
